@@ -20,13 +20,11 @@ let viewProfile = async ({ query }, res) => {
     ['first_name']: person.fields['First Name'],
     ['last_name']: person.fields['Last Name'],
     ['gender']: capitalizeString(person.fields['Gender']),
-    ['interests']: person.fields['Interests'].map(interest => ({ interest })),
-    ['professions']: person.fields['Professions'].map(profession => ({ profession })),
+    ['interests']: person.fields['Interests'] ? person.fields['Interests'].map(interest => ({ interest })) : [],
+    ['professions']: person.fields['Professions'] ? person.fields['Professions'].map(profession => ({ profession })) : [],
     ['profile_image_url']: profile_images[0],
     ['photos']: profile_images.map(url => ({ url }))
   }
-
-  console.log('person_data', person_data);
 
   let view_html = riot.render(
     user_profile_tag,
