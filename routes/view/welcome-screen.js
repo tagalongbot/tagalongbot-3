@@ -1,4 +1,4 @@
-let view_template = require('../../../views/welcome-screen.marko');
+let view_template = require('../../views/welcome-screen.marko');
 
 let sendWelcomeScreen = async ({ query }, res) => {
   res.marko(
