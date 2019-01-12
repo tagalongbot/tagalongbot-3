@@ -3,7 +3,7 @@ let { BASEURL } = process.env;
 let { createBtn } = require('../../libs/bots.js');
 let { createURL } = require('../../libs/helpers/strings.js');
 
-let createPeopleCards = (person) => {
+let createPeopleCards = (index) => (person) => {
   let tagged_person_messenger_id = person.fields['messenger user id'];
 
   let is_person_verified = person.fields['Verified?'];
@@ -23,6 +23,7 @@ let createPeopleCards = (person) => {
 
   let next_profile_btn = createBtn(
     `Next|show_block|[JSON] Browse Profiles`,
+    { index }
   );
 
   let view_profile_url = createURL(
