@@ -59,6 +59,12 @@ let searchPeople = async ({ query }, res) => {
     .splice(index, 1)
     .map(createPeopleCards(index+1));
 
+  if (gallery_data.length === 0) {
+    let redirect_to_blocks = ['No More Profiles'];
+    res.send({ redirect_to_blocks });
+    return;
+  }
+
   let gallery = createGallery(gallery_data, 'square');
 
   let messages = [gallery];
